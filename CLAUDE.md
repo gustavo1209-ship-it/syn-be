@@ -15,11 +15,13 @@ Ver `docs/analise-estrategica.md` para o diagnóstico completo (produto, mapa co
 
 ## Modelo de dados
 
-Três tabelas no Postgres (Supabase), RLS habilitado sem policies — só o `service_role` (usado pelo backend) acessa; não há chave anon exposta ao frontend, que fala apenas com o backend Node.
+Três tabelas no Postgres (Supabase), prefixadas com `synbe_` porque o projeto é **compartilhado com outros apps do usuário** (mesmo projeto usado por `controle-gastos` e outro app com tabelas `hb_*`). RLS habilitado sem policies — só o `service_role` (usado pelo backend) acessa; não há chave anon exposta ao frontend, que fala apenas com o backend Node.
 
-- **initiatives** — backlog de ações (`category`: produto | gtm_clientes | investidores | ciencia_credibilidade | parcerias | operacao; `status`: ideia → proposta → em_andamento → concluida/descartada; `priority`: alta/media/baixa).
-- **research_notes** — achados de pesquisa (mercado, concorrência, produto).
-- **competitors** — mapa competitivo (Aaru, Simile, Artificial Societies, etc.).
+- **synbe_initiatives** — backlog de ações (`category`: produto | gtm_clientes | investidores | ciencia_credibilidade | parcerias | operacao; `status`: ideia → proposta → em_andamento → concluida/descartada; `priority`: alta/media/baixa).
+- **synbe_research_notes** — achados de pesquisa (mercado, concorrência, produto).
+- **synbe_competitors** — mapa competitivo (Aaru, Simile, Artificial Societies, etc.).
+
+> Nota: esse projeto Supabase tem 16 tabelas (`hb_*`) com RLS desabilitado, expostas à chave anon — achado de segurança pré-existente, não relacionado ao syn-be. Reportado ao usuário; correção pendente de decisão dele.
 
 ## Comandos
 
@@ -48,6 +50,8 @@ npm run build
 
 ## Hospedagem / deploy
 
-- **Frontend**: Vercel.
-- **Backend**: é um servidor Express persistente (não serverless) — não roda nativamente na Vercel. Precisa de um host que suporte processo Node contínuo (ex.: Railway, Render, Fly.io) ou ser adaptado para função serverless antes de ir para a Vercel. Decisão ainda em aberto — ver conversa com o usuário antes de escolher.
-- **Banco**: Supabase (projeto dedicado a este app, migrations em `supabase/migrations/`).
+- **Frontend**: Vercel, deploy a partir de `frontend/`. Env var: `NEXT_PUBLIC_API_URL` apontando para a URL do backend na Vercel.
+- **Backend**: dois modos de execução a partir do mesmo código-fonte (`src/app.ts` monta o Express app sem chamar `listen`):
+  - Local/dev contínuo: `src/index.ts` chama `app.listen()` (`npm run dev` / `npm run start`).
+  - Vercel (serverless): `api/index.ts` exporta o mesmo `app` como handler; `vercel.json` reescreve todas as rotas para `/api`. Deploy a partir de `backend/` como projeto Vercel separado. Env vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `FRONTEND_ORIGIN` (URL do frontend na Vercel).
+- **Banco**: Supabase, projeto `wbmcyhqlsiuekbizwcti` ("gustavo1209-ship-it's Project") — compartilhado com outros apps do usuário (limite de 2 projetos gratuitos na organização já estava atingido). Tabelas isoladas com prefixo `synbe_`. Migrations em `supabase/migrations/`.

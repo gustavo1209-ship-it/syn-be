@@ -1,7 +1,7 @@
 -- Seed inicial: backlog de ações e pesquisa de mercado da análise estratégica
 -- (ver docs/analise-estrategica.md na raiz do repositório)
 
-insert into initiatives (title, description, category, priority) values
+insert into synbe_initiatives (title, description, category, priority) values
   ('Mini-simulador público interativo', 'Cenário genérico pré-configurado onde o visitante testa o Syntropic Protocol em minutos: gera lead qualificado e demonstra a tecnologia na prática.', 'produto', 'alta'),
   ('Whitepaper metodológico público', 'Publicar documento citando as fontes científicas mencionadas no site (Stanford/Cambridge/Nature) para credibilidade e SEO.', 'produto', 'media'),
   ('Avaliar estrutura de tiers', 'Definir oferta self-serve vs. enterprise, usando como referência Minds (self-serve) e Aaru (enterprise).', 'produto', 'media'),
@@ -19,7 +19,7 @@ insert into initiatives (title, description, category, priority) values
   ('Trazer contatos da rede para piloto real', '1-2 contatos próprios para primeira validação e primeiro case.', 'gtm_clientes', 'media'),
   ('Manter esta plataforma como sala de acompanhamento', 'Registrar decisões, propostas e status da parceria ao longo do tempo.', 'operacao', 'media');
 
-insert into research_notes (title, content, category, source_url) values
+insert into synbe_research_notes (title, content, category, source_url) values
   ('Diagnóstico do produto e posicionamento', 'Syntropic Protocol: simula comportamento organizacional interno (cultura, adesão, execução) a partir de agentes sintéticos, diferente da maioria do mercado que foca em pesquisa de mercado/consumidor externo. Fundador Douglas Conte tem bagagem em cultura organizacional e branding comportamental (Qore.me), não em GTM enterprise de software — possível área de contribuição do sócio.', 'produto', null),
   ('Lacunas identificadas no site (jul/2026)', 'Sem cases públicos, sem pricing, fontes científicas citadas sem links verificáveis, único CTA é WhatsApp (sem demo/waitlist), site só em português, sem menção a segurança/privacidade de dados organizacionais (relevante para LGPD e vendas enterprise).', 'produto', 'https://syn.be/'),
   ('Aaru — concorrente enterprise', 'Simulação comportamental enterprise, parceria com EY, ~90% de correlação com pesquisa real, contratos de 6-7 dígitos, valuation ~US$1B (Series A Redpoint, dez/2025).', 'concorrencia', 'https://techcrunch.com/2025/12/05/ai-synthetic-research-startup-aaru-raised-a-series-a-at-a-1b-headline-valuation/'),
@@ -27,7 +27,7 @@ insert into research_notes (title, content, category, source_url) values
   ('Artificial Societies — o mais próximo do nicho da syn.Be', '2,5M+ personas sintéticas; simula reação de investidores, "policy influencers" e buyer committees para empresas Fortune 500. Backing: Y Combinator e Kindred Capital. É o concorrente mapeado com maior potencial de invadir o território de "stakeholders internos" da syn.Be.', 'concorrencia', 'https://www.ycombinator.com/companies/artificial-societies'),
   ('Mercado de synthetic research em 2026', 'Setor já atraiu mais de US$1,5B em capital de risco, com clientes como CVS Health, BlackRock, EY e Microsoft. Padrão maduro é híbrido: sintético para iteração rápida, respondentes reais para a decisão final.', 'mercado', 'https://askditto.io/news/synthetic-research-platforms-the-2026-market-map');
 
-insert into competitors (name, url, positioning, funding, notes) values
+insert into synbe_competitors (name, url, positioning, funding, notes) values
   ('Aaru', 'https://aaru.com/', 'Previsão comportamental enterprise, parceria EY', '~US$1B valuation (Series A, Redpoint)', 'Contratos de 6-7 dígitos, ciclo de venda longo'),
   ('Simile', 'https://simile.ai/', 'Simulação de decisões humanas, criadores do conceito "generative agents"', 'US$100M (Index Ventures)', 'Maior rodada única do setor; time acadêmico de Stanford'),
   ('Artificial Societies', null, 'Simula reação de investidores, policy influencers e buyer committees para F500', 'YC + Kindred Capital', 'Concorrente mais próximo do nicho "stakeholders internos" da syn.Be'),
