@@ -1,6 +1,6 @@
 # Análise Estratégica — syn.Be
 
-> Documento vivo. Última atualização: 2026-07-02. Serve como base para o backlog de ações carregado no app (ver `backend/seed`).
+> Documento vivo. Última atualização: 2026-07-04 (reavaliação do site). Serve como base para o backlog de ações carregado no app (ver `backend/seed`).
 
 ## 1. Diagnóstico do produto e posicionamento
 
@@ -25,12 +25,22 @@
 
 ## 3. Lacunas identificadas no site atual (syn.be)
 
+### Fechadas pelo Douglas entre 02/jul e 04/jul/2026 ✅
+
+- ~~Base científica sem fontes verificáveis~~ → publicada a página **`/fontes.html`** com o "Arcabouço Teórico Syntropic" (fundamentação em 5 camadas, v1, baixável em `.md`) e bibliografia completa com links diretos (Park et al./Stanford, Argyle, Machine Behaviour/Nature, PIMMUR, ICML 2025 etc.), incluindo seção honesta de "Limites e validação — o que ainda não está provado". Sinal forte: o fundador executa bem e rápido a frente ciência/credibilidade.
+- ~~WhatsApp como único CTA~~ → lançada a **newsletter SYN.THESIS** no rodapé, segundo canal de captura de leads.
+
+### Ainda abertas
+
 - Sem prova social/cases, mesmo anonimizados.
 - Sem página de pricing ou modelo de engajamento explícito.
-- Menciona base científica ("Stanford, Cambridge, Nature") mas sem links/fontes verificáveis publicamente.
-- Único CTA é WhatsApp/contato — não há demo, waitlist ou simulador experimentável.
+- Sem demo, waitlist ou simulador experimentável (newsletter ajuda, mas não demonstra o produto).
 - Site 100% em português — limita alcance para investidores/imprensa internacional.
 - Nenhuma menção pública a segurança/privacidade de dados organizacionais (relevante para LGPD e para venda enterprise, já que o produto processa dados internos sensíveis de clientes).
+- Conselho Científico Consultivo citado, mas sem nomes/afiliações públicas.
+- Números de validação (92% de correspondência, 29 testes) ainda sem relatório técnico citável.
+
+**Leitura estratégica:** as lacunas que o Douglas fechou sozinho são as de ciência/credibilidade — o forte dele. As que permanecem são exatamente as comerciais e de captação, onde a atuação do sócio agrega mais (ver §5).
 
 ## 4. Backlog de ações propostas
 
@@ -61,6 +71,17 @@ Categorizado e carregado no app (`initiatives`) com status inicial `ideia` e pri
 14. **[Alta]** Liderar preparação do material para investidores (deck, mapeamento de fundos, outreach).
 15. **[Média]** Trazer 1–2 contatos da própria rede para piloto real — primeira validação e primeiro case.
 16. **[Contínua]** Manter esta plataforma como "sala de acompanhamento" viva da parceria — registrar decisões, propostas e status ao longo do tempo.
+
+## 5. Propostas de atuação (reavaliação de 04/jul/2026)
+
+Carregadas no app com status `proposta` — são as frentes que posso assumir pessoalmente, formuladas a partir da reavaliação do site. Critério: baixa sobreposição com o que o Douglas já executa bem (ciência/produto) e alta alavancagem para tração e captação.
+
+17. **[Alta]** Sessão de alinhamento com Douglas: apresentar o diagnóstico e acordar a divisão de frentes (ele: produto/ciência; eu: comercial/GTM e captação), saindo com 2–3 compromissos de 30 dias. É o destravador de todo o resto.
+18. **[Alta]** Redigir versão em inglês do site (ou one-pager `/en`) — pré-requisito para outreach a fundos internacionais e presença nos market maps do setor; entrego sozinho, sem depender do fundador.
+19. **[Alta]** Publicar página de privacidade/segurança de dados (LGPD) — objeção nº 1 de compradores enterprise; posso rascunhar e validar com advogado da rede.
+20. **[Média]** Mapear funding não-dilutivo (Finep, fundações estaduais, Sebrae, aceleradoras/embaixadas) — a base científica publicada em `/fontes.html` é exatamente o material que editais exigem; complementa a rota de pré-seed sem diluição.
+21. **[Média]** Transformar o arcabouço teórico publicado em conteúdo de distribuição — série no LinkedIn (1 camada/semana, assinada pelo Douglas), pauta para imprensa de tech BR e isca para a newsletter; eu produzo, ele revisa.
+22. **[Média]** Assumir o plano editorial e metas de crescimento da newsletter SYN.THESIS — a lista de e-mails é o único ativo de audiência próprio da empresa; transformá-la em pipeline de leads para os pilotos.
 
 ## Fontes da pesquisa de mercado
 
