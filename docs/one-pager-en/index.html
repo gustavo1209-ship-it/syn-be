@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>syn.Be — Synthetic Behavioral Inference Lab</title>
+<meta name="description" content="syn.Be turns cultural and organizational data into synthetic societies that test how real groups react to strategic decisions — before execution.">
+<!--
+  One-pager EN — proposta para publicação em syn.be/en (compromisso G1 da sessão de alinhamento).
+  Identidade visual extraída do site atual: fundo preto, texto #B7B7B7, acento #A25B4C,
+  títulos "PP Neue Montreal" (servida como Barlow) e rótulos "Berkeley Mono" (servida como Space Mono).
+  Arquivo standalone: basta hospedar como /en (ou /en/index.html). Sem dependências além do Google Fonts.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060607;
+    --panel: #111111;
+    --ink: #B7B7B7;
+    --bright: #EDEDEE;
+    --dim: #878787;
+    --faint: #5F5F5F;
+    --line: #2B2B2B;
+    --accent: #A25B4C;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PP Neue Montreal", Barlow, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: "Berkeley Mono", "Space Mono", Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px 88px; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  header .brand { color: var(--bright); }
+  header .tag { color: var(--faint); }
+
+  .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+  .hero h1 {
+    font-size: clamp(2.2rem, 7vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    color: var(--bright);
+    margin: 0 0 28px;
+    text-wrap: balance;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p {
+    max-width: 58ch;
+    margin: 0;
+    font-size: 1.08rem;
+    color: var(--ink);
+  }
+
+  section { padding: 52px 0 12px; }
+  section + section { border-top: 1px solid var(--line); }
+  .sec-head { display: flex; gap: 18px; align-items: baseline; margin-bottom: 22px; }
+  .sec-head .num { color: var(--accent); }
+  .sec-head h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--bright);
+  }
+  section p { max-width: 62ch; }
+  section p b { color: var(--bright); font-weight: 500; }
+  .dim { color: var(--dim); }
+
+  /* Risk lenses */
+  .risks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 28px 0 16px;
+  }
+  .risk { background: var(--panel); padding: 18px 16px; }
+  .risk .mono { color: var(--accent); display: block; margin-bottom: 8px; }
+  .risk p { margin: 0; font-size: 0.85rem; color: var(--dim); }
+
+  /* Method steps */
+  ol.steps { list-style: none; margin: 24px 0 16px; padding: 0; counter-reset: step; }
+  ol.steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 52px 200px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  ol.steps li:last-child { border-bottom: 1px solid var(--line); }
+  ol.steps li::before {
+    content: "0" counter(step);
+    font-family: "Berkeley Mono", "Space Mono", Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+  ol.steps .name { color: var(--bright); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.05em; }
+  ol.steps .desc { color: var(--dim); font-size: 0.9rem; margin: 0; }
+  @media (max-width: 640px) {
+    ol.steps li { grid-template-columns: 40px 1fr; }
+    ol.steps .desc { grid-column: 2; }
+  }
+
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    margin: 32px 0 24px;
+  }
+  .stat .value {
+    font-size: clamp(2.6rem, 6vw, 3.6rem);
+    font-weight: 500;
+    color: var(--bright);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat .label { color: var(--accent); margin: 10px 0 6px; display: block; }
+  .stat p { margin: 0; font-size: 0.85rem; color: var(--dim); max-width: 26ch; }
+  .stat a { color: var(--dim); }
+
+  /* Positioning */
+  .contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 26px 0 18px;
+  }
+  @media (max-width: 620px) { .contrast { grid-template-columns: 1fr; } }
+  .contrast .cell { background: var(--panel); padding: 22px; }
+  .contrast .cell.us { background: var(--bg); box-shadow: inset 3px 0 0 var(--accent); }
+  .contrast .mono { display: block; margin-bottom: 10px; }
+  .contrast .cell .mono { color: var(--faint); }
+  .contrast .cell.us .mono { color: var(--accent); }
+  .contrast p { margin: 0; font-size: 0.92rem; color: var(--dim); }
+  .contrast .cell.us p { color: var(--ink); }
+
+  /* Founder */
+  .founder p { max-width: 60ch; }
+
+  /* Contact */
+  .contact {
+    margin-top: 56px;
+    padding: 32px 0 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .contact .cta {
+    color: var(--bright);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+  }
+  .contact .cta:hover { color: var(--accent); }
+  .contact .alt { color: var(--faint); }
+  .contact .alt a { color: var(--dim); }
+
+  footer { margin-top: 48px; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="brand mono">syn.Be · Synthetic Behavioral Inference Lab</span>
+    <span class="tag mono">EN · <a href="https://syn.be/" style="color:inherit">PT</a></span>
+  </header>
+
+  <div class="hero">
+    <h1>Before you decide, <em>simulate.</em></h1>
+    <p>syn.Be turns cultural, human and contextual data into <b>synthetic organizational societies</b> — AI agents built to test how real groups react to strategic decisions, crises and change, before execution. We don't simulate isolated individuals. We simulate human systems in interaction.</p>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <span class="num mono">01</span>
+      <h2>The problem</h2>
+    </div>
+    <p>Every strategic decision triggers reactions across a human system before it becomes a result. Between intention and execution there are people — and people mean behavior: adherence, resistance, distortion, silence.</p>
+    <p class="dim">syn.Be simulates those behaviors to anticipate outcomes: which scenarios are most likely to deliver the best return, and which risks can burn time, money and trust.</p>
+    <div class="risks">
+      <div class="risk"><span class="mono">Decision risk</span><p>Which path tends to work best, before implementation.</p></div>
+      <div class="risk"><span class="mono">Adoption risk</span><p>Who tends to buy in, resist, distort or ignore the decision.</p></div>
+      <div class="risk"><span class="mono">Execution risk</span><p>What can compromise productivity, focus and speed.</p></div>
+      <div class="risk"><span class="mono">Cultural risk</span><p>Whether the decision builds or erodes trust and belonging.</p></div>
+      <div class="risk"><span class="mono">Reputation risk</span><p>Noise, cynicism, parallel narratives, leadership wear.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num mono">02</span>
+      <h2>The method — Syntropic Protocol</h2>
+    </div>
+    <p>A behavioral simulation method combining behavioral science, complex-systems modeling and generative AI. Each simulation builds synthetic agents from real organizational profiles, exposes them to critical scenarios, and lets them interact — adjusting positions, resisting, adhering, amplifying narratives.</p>
+    <ol class="steps">
+      <li><span class="name">Synthetic agents</span><p class="desc">Representative profiles grounded in real groups: culture, context, demographics, history.</p></li>
+      <li><span class="name">Organizational environment</span><p class="desc">Culture, external context, leadership, social pressure and company moment.</p></li>
+      <li><span class="name">Individual projection</span><p class="desc">Each agent reacts to the scenario before meeting the group.</p></li>
+      <li><span class="name">Collective interaction</span><p class="desc">Agents confront responses, narratives and social pressures.</p></li>
+      <li><span class="name">Probabilistic synthesis</span><p class="desc">Likely scenarios, emerging risks and decision paths — a distribution, not a single prediction.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num mono">03</span>
+      <h2>Validation</h2>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="value">92%</div>
+        <span class="label mono">Correspondence</span>
+        <p>Average overlap between synthetic simulation and traditional research.</p>
+      </div>
+      <div class="stat">
+        <div class="value">29</div>
+        <span class="label mono">Application tests</span>
+        <p>Direct comparisons validating the accuracy of synthetic inference.</p>
+      </div>
+      <div class="stat">
+        <div class="value">15+</div>
+        <span class="label mono">Scientific sources</span>
+        <p>Stanford, Cambridge, Nature and more. <a href="https://syn.be/fontes.html">Full theoretical framework →</a></p>
+      </div>
+    </div>
+    <p class="dim">Our published framework spans the field's foundational work — from Stanford's generative-agents lineage to Nature's <i>Machine Behaviour</i> — and includes an explicit section on limits and open validation questions.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num mono">04</span>
+      <h2>Positioning</h2>
+    </div>
+    <p>Synthetic research is an emerging, venture-backed category. Nearly all of it points <b>outward</b> — simulating consumers, voters and buyers for market research.</p>
+    <div class="contrast">
+      <div class="cell">
+        <span class="mono">The category</span>
+        <p>External audiences: message testing, pricing, campaigns, consumer panels at scale.</p>
+      </div>
+      <div class="cell us">
+        <span class="mono">syn.Be</span>
+        <p>The inside of the organization: how a company's own people react to strategic decisions — adoption, culture, execution risk. A narrower, harder-to-commoditize problem.</p>
+      </div>
+    </div>
+    <p class="dim">Category frame: AI Behavioral Science applied to organizational decision-making.</p>
+  </section>
+
+  <section class="founder">
+    <div class="sec-head">
+      <span class="num mono">05</span>
+      <h2>Founder</h2>
+    </div>
+    <p><b>Douglas Conte</b> — a career connecting applied behavioral economics, branding and organizational culture, helping leading brands shape behavior across image, culture, decision and performance. Founder of Qore, a deep tech that synthesizes behavior into data.</p>
+    <p class="dim">The Syntropic Protocol is developed with the support of a Scientific Advisory Board — academic advisors, researchers, professors and associated PhDs.</p>
+
+    <div class="contact">
+      <a class="cta" href="mailto:hello@syn.be">hello@syn.be</a>
+      <span class="alt mono">Newsletter · <a href="https://syn.be/#signup-contact">syn.thesis</a></span>
+    </div>
+  </section>
+
+  <footer>
+    <span class="mono">© 2026 syn.Be</span>
+    <span class="mono"><a href="https://syn.be/">syn.be</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
